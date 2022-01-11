@@ -1,8 +1,8 @@
+package view;
+
 import java.time.DateTimeException;
 import java.time.LocalDate;
 import java.util.InputMismatchException;
-
-
 
 public class AppException {
     public static int inputNumber() {

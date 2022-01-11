@@ -1,3 +1,7 @@
+package view;
+
+import model.PhoneBook;
+
 import java.io.*;
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -47,6 +51,7 @@ public class PhoneBookManagement {
 
             FileReader fileReader = new FileReader(file);
             BufferedReader bufferedReader = new BufferedReader(fileReader);
+            System.err.println("Đọc file thành công");
 
             for(String line = bufferedReader.readLine(); line != null; line = bufferedReader.readLine()) {
                 String[] data = line.split(",");
@@ -59,6 +64,7 @@ public class PhoneBookManagement {
                 String email = data[6];
                 PhoneBook phoneBook = new PhoneBook(phoneNumber,groupOfContacts, fullName, gender, address, dateOfBirth, email);
                 phoneBooks.add(phoneBook);
+                System.out.println(phoneBook);
             }
 
             bufferedReader.close();
@@ -75,6 +81,7 @@ public class PhoneBookManagement {
         try {
             FileWriter fileWriter = new FileWriter(FILE_PATCH);
             BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
+            System.err.println("Lưu file thành công");
             for (PhoneBook phoneBook : phoneBooks) {
                 bufferedWriter.write(phoneBook.toString());
                 bufferedWriter.newLine();

@@ -1,6 +1,6 @@
 <html>
 <head>
-<title>PhoneBookRun.java</title>
+<title>main.PhoneBookRun.java</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <style type="text/css">
 .s0 { color: #ed864a;}
@@ -15,29 +15,29 @@
 <table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
 <tr><td><center>
 <font face="Arial, Helvetica" color="#000000">
-PhoneBookRun.java</font>
+main.PhoneBookRun.java</font>
 </center></td></tr></table>
 <pre><span class="s0">import </span><span class="s1">java.time.LocalDate</span><span class="s2">;</span>
 <span class="s0">import </span><span class="s1">java.util.Objects</span><span class="s2">;</span>
 <span class="s0">import </span><span class="s1">java.util.regex.Matcher</span><span class="s2">;</span>
 <span class="s0">import </span><span class="s1">java.util.regex.Pattern</span><span class="s2">;</span>
 
-<span class="s0">public class </span><span class="s1">PhoneBookRun {</span>
-    <span class="s0">public static </span><span class="s1">PhoneBookManagement phoneBooks = </span><span class="s0">new </span><span class="s1">PhoneBookManagement()</span><span class="s2">;</span>
+<span class="s0">public class </span><span class="s1">main.PhoneBookRun {</span>
+    <span class="s0">public static </span><span class="s1">view.PhoneBookManagement phoneBooks = </span><span class="s0">new </span><span class="s1">view.PhoneBookManagement()</span><span class="s2">;</span>
 
     <span class="s0">public void </span><span class="s1">run() {</span>
         <span class="s0">int </span><span class="s1">choose</span><span class="s2">;</span>
         <span class="s0">do </span><span class="s1">{</span>
             <span class="s1">menu()</span><span class="s2">;</span>
-            <span class="s1">choose = AppException.inputNumber()</span><span class="s2">;</span>
-            <span class="s1">AppException.inputNumber(choose</span><span class="s2">, </span><span class="s3">1</span><span class="s2">, </span><span class="s3">8</span><span class="s1">)</span><span class="s2">;</span>
+            <span class="s1">choose = view.AppException.inputNumber()</span><span class="s2">;</span>
+            <span class="s1">view.AppException.inputNumber(choose</span><span class="s2">, </span><span class="s3">1</span><span class="s2">, </span><span class="s3">8</span><span class="s1">)</span><span class="s2">;</span>
             <span class="s0">switch </span><span class="s1">(choose) {</span>
                 <span class="s0">case </span><span class="s3">1</span><span class="s1">:</span>
                     <span class="s1">showPhoneBook()</span><span class="s2">;</span>
                     <span class="s0">break</span><span class="s2">;</span>
                 <span class="s0">case </span><span class="s3">2</span><span class="s1">:</span>
                     <span class="s1">addPhoneBook()</span><span class="s2">;</span>
-                    <span class="s1">Const.SCANNER.nextLine()</span><span class="s2">;</span>
+                    <span class="s1">view.Const.SCANNER.nextLine()</span><span class="s2">;</span>
                     <span class="s0">break</span><span class="s2">;</span>
 
                 <span class="s0">case </span><span class="s3">3</span><span class="s1">:</span>
@@ -69,8 +69,8 @@ PhoneBookRun.java</font>
 
     <span class="s0">private static void </span><span class="s1">searchPhoneNumber() {</span>
         <span class="s1">System.out.println(</span><span class="s4">&quot;Nhập số điện thoại tìm kiếm&quot;</span><span class="s1">)</span><span class="s2">;</span>
-        <span class="s1">String phoneSearch = Const.SCANNER.nextLine()</span><span class="s2">;</span>
-        <span class="s0">for </span><span class="s1">(PhoneBook phoneBook : phoneBooks.getPhoneBooks()) {</span>
+        <span class="s1">String phoneSearch = view.Const.SCANNER.nextLine()</span><span class="s2">;</span>
+        <span class="s0">for </span><span class="s1">(model.PhoneBook phoneBook : phoneBooks.getPhoneBooks()) {</span>
             <span class="s0">if </span><span class="s1">(phoneBook.getPhoneNumber().contains(phoneSearch)) {</span>
                 <span class="s1">System.out.println(phoneBook)</span><span class="s2">;</span>
             <span class="s1">}</span>
@@ -87,13 +87,13 @@ PhoneBookRun.java</font>
                 <span class="s0">break</span><span class="s2">;</span>
             <span class="s1">}</span>
             <span class="s0">while </span><span class="s1">(count &gt; </span><span class="s3">0 </span><span class="s1">&amp;&amp; index &lt; phoneBooks.getPhoneBooks().size()) {</span>
-                <span class="s1">PhoneBook phoneBook = phoneBooks.getPhoneBooks().get(index)</span><span class="s2">;</span>
+                <span class="s1">model.PhoneBook phoneBook = phoneBooks.getPhoneBooks().get(index)</span><span class="s2">;</span>
                 <span class="s1">index++</span><span class="s2">;</span>
                 <span class="s1">System.out.println(phoneBook)</span><span class="s2">;</span>
                 <span class="s1">count--</span><span class="s2">;</span>
             <span class="s1">}</span>
             <span class="s1">System.out.println(</span><span class="s4">&quot;Nhấn enter đế tiếp tục&quot;</span><span class="s1">)</span><span class="s2">;</span>
-            <span class="s1">choose = Const.SCANNER.nextLine()</span><span class="s2">;</span>
+            <span class="s1">choose = view.Const.SCANNER.nextLine()</span><span class="s2">;</span>
             <span class="s1">count = </span><span class="s3">5</span><span class="s2">;</span>
         <span class="s1">} </span><span class="s0">while </span><span class="s1">(choose.equals(</span><span class="s4">&quot;&quot;</span><span class="s1">))</span><span class="s2">;</span>
     <span class="s1">}</span>
@@ -102,13 +102,13 @@ PhoneBookRun.java</font>
         <span class="s1">String phoneNumber</span><span class="s2">;</span>
         <span class="s0">do </span><span class="s1">{</span>
             <span class="s1">System.out.println(</span><span class="s4">&quot;Nhập vào số điện thoại bạn muốn xóa&quot;</span><span class="s1">)</span><span class="s2">;</span>
-            <span class="s1">phoneNumber = Const.SCANNER.nextLine()</span><span class="s2">;</span>
+            <span class="s1">phoneNumber = view.Const.SCANNER.nextLine()</span><span class="s2">;</span>
             <span class="s0">int </span><span class="s1">index = phoneBooks.searchIndexByPhoneNumber(phoneNumber)</span><span class="s2">;</span>
             <span class="s0">if </span><span class="s1">(index == -</span><span class="s3">1</span><span class="s1">) {</span>
                 <span class="s1">System.err.println(</span><span class="s4">&quot;Không tìm được danh bạ với số điện thoại trên.&quot;</span><span class="s1">)</span><span class="s2">;</span>
             <span class="s1">} </span><span class="s0">else </span><span class="s1">{</span>
                 <span class="s1">System.out.println(</span><span class="s4">&quot;Chọn </span><span class="s0">\&quot;</span><span class="s4">y</span><span class="s0">\&quot; </span><span class="s4">để xác nhận xóa&quot;</span><span class="s1">)</span><span class="s2">;</span>
-                <span class="s1">String check = Const.SCANNER.nextLine()</span><span class="s2">;</span>
+                <span class="s1">String check = view.Const.SCANNER.nextLine()</span><span class="s2">;</span>
                 <span class="s0">if </span><span class="s1">(check.equals(</span><span class="s4">&quot;y&quot;</span><span class="s1">)) {</span>
                     <span class="s1">phoneBooks.remove(index)</span><span class="s2">;</span>
                 <span class="s1">}</span>
@@ -122,12 +122,12 @@ PhoneBookRun.java</font>
         <span class="s1">String phoneNumber</span><span class="s2">;</span>
         <span class="s0">do </span><span class="s1">{</span>
             <span class="s1">System.out.println(</span><span class="s4">&quot;Nhập vào số điện thoại bạn cần sửa&quot;</span><span class="s1">)</span><span class="s2">;</span>
-            <span class="s1">phoneNumber = Const.SCANNER.nextLine()</span><span class="s2">;</span>
+            <span class="s1">phoneNumber = view.Const.SCANNER.nextLine()</span><span class="s2">;</span>
             <span class="s0">int </span><span class="s1">index = phoneBooks.searchIndexByPhoneNumber(phoneNumber)</span><span class="s2">;</span>
             <span class="s0">if </span><span class="s1">(index == -</span><span class="s3">1</span><span class="s1">) {</span>
                 <span class="s1">System.err.println(</span><span class="s4">&quot;Không tìm được danh bạ với số điện thoại trên.&quot;</span><span class="s1">)</span><span class="s2">;</span>
             <span class="s1">} </span><span class="s0">else </span><span class="s1">{</span>
-                <span class="s1">PhoneBook phoneBook = inputPhoneBookEdit()</span><span class="s2">;</span>
+                <span class="s1">model.PhoneBook phoneBook = inputPhoneBookEdit()</span><span class="s2">;</span>
                 <span class="s1">phoneBook.setPhoneNumber(phoneNumber)</span><span class="s2">;</span>
                 <span class="s1">phoneBooks.edit(index</span><span class="s2">, </span><span class="s1">phoneBook)</span><span class="s2">;</span>
                 <span class="s0">break</span><span class="s2">;</span>
@@ -136,44 +136,44 @@ PhoneBookRun.java</font>
     <span class="s1">}</span>
 
     <span class="s0">private void </span><span class="s1">addPhoneBook() {</span>
-        <span class="s1">PhoneBook phoneBook = inputPhoneBookEdit()</span><span class="s2">;</span>
+        <span class="s1">model.PhoneBook phoneBook = inputPhoneBookEdit()</span><span class="s2">;</span>
         <span class="s1">phoneBooks.add(phoneBook)</span><span class="s2">;</span>
     <span class="s1">}</span>
-<span class="s5">//    private PhoneBook createPhoneBook(){</span>
-<span class="s5">//        Const.SCANNER.nextLine();</span>
+<span class="s5">//    private model.PhoneBook createPhoneBook(){</span>
+<span class="s5">//        view.Const.SCANNER.nextLine();</span>
 <span class="s5">//        String numberPhone = inputPhoneBook();</span>
-<span class="s5">//        String group = Const.SCANNER.nextLine();</span>
-<span class="s5">//        String fullName = Const.SCANNER.nextLine();</span>
-<span class="s5">//        String gender = Const.SCANNER.nextLine();</span>
-<span class="s5">//        String address = Const.SCANNER.nextLine();</span>
+<span class="s5">//        String group = view.Const.SCANNER.nextLine();</span>
+<span class="s5">//        String fullName = view.Const.SCANNER.nextLine();</span>
+<span class="s5">//        String gender = view.Const.SCANNER.nextLine();</span>
+<span class="s5">//        String address = view.Const.SCANNER.nextLine();</span>
 <span class="s5">//        LocalDate dateOfBirth;</span>
 <span class="s5">//        do {</span>
 <span class="s5">//            System.out.println(&quot;Ngày sinh.&quot;);</span>
-<span class="s5">//            String dateString = Const.SCANNER.nextLine();</span>
-<span class="s5">//            dateOfBirth = AppException.inputDate(dateString);</span>
+<span class="s5">//            String dateString = view.Const.SCANNER.nextLine();</span>
+<span class="s5">//            dateOfBirth = view.AppException.inputDate(dateString);</span>
 <span class="s5">//        } while (dateOfBirth == null);</span>
 <span class="s5">//        String email = inputEmail();</span>
-<span class="s5">//        return new PhoneBook(numberPhone, group, fullName, gender, address, dateOfBirth, email);</span>
+<span class="s5">//        return new model.PhoneBook(numberPhone, group, fullName, gender, address, dateOfBirth, email);</span>
 <span class="s5">//    }</span>
 
-    <span class="s0">private </span><span class="s1">PhoneBook inputPhoneBookEdit() {</span>
+    <span class="s0">private </span><span class="s1">model.PhoneBook inputPhoneBookEdit() {</span>
         <span class="s1">String phoneNumber = inputPhoneBook()</span><span class="s2">;</span>
         <span class="s1">System.out.println(</span><span class="s4">&quot;Nhóm của danh bạ.&quot;</span><span class="s1">)</span><span class="s2">;</span>
-        <span class="s1">String group = Const.SCANNER.nextLine()</span><span class="s2">;</span>
+        <span class="s1">String group = view.Const.SCANNER.nextLine()</span><span class="s2">;</span>
         <span class="s1">System.out.println(</span><span class="s4">&quot;Họ tên.&quot;</span><span class="s1">)</span><span class="s2">;</span>
-        <span class="s1">String fullName = Const.SCANNER.nextLine()</span><span class="s2">;</span>
+        <span class="s1">String fullName = view.Const.SCANNER.nextLine()</span><span class="s2">;</span>
         <span class="s1">System.out.println(</span><span class="s4">&quot;Giới tính&quot;</span><span class="s1">)</span><span class="s2">;</span>
-        <span class="s1">String gender = Const.SCANNER.nextLine()</span><span class="s2">;</span>
+        <span class="s1">String gender = view.Const.SCANNER.nextLine()</span><span class="s2">;</span>
         <span class="s1">System.out.println(</span><span class="s4">&quot;Địa chỉ.&quot;</span><span class="s1">)</span><span class="s2">;</span>
-        <span class="s1">String address = Const.SCANNER.nextLine()</span><span class="s2">;</span>
+        <span class="s1">String address = view.Const.SCANNER.nextLine()</span><span class="s2">;</span>
         <span class="s1">LocalDate dateOfBirth</span><span class="s2">;</span>
         <span class="s0">do </span><span class="s1">{</span>
             <span class="s1">System.out.println(</span><span class="s4">&quot;Ngày sinh.&quot;</span><span class="s1">)</span><span class="s2">;</span>
-            <span class="s1">String dateString = Const.SCANNER.nextLine()</span><span class="s2">;</span>
-            <span class="s1">dateOfBirth = AppException.inputDate(dateString)</span><span class="s2">;</span>
+            <span class="s1">String dateString = view.Const.SCANNER.nextLine()</span><span class="s2">;</span>
+            <span class="s1">dateOfBirth = view.AppException.inputDate(dateString)</span><span class="s2">;</span>
         <span class="s1">} </span><span class="s0">while </span><span class="s1">(dateOfBirth == </span><span class="s0">null</span><span class="s1">)</span><span class="s2">;</span>
         <span class="s1">String email = inputEmail()</span><span class="s2">;</span>
-        <span class="s0">return new </span><span class="s1">PhoneBook(phoneNumber</span><span class="s2">,</span><span class="s1">group</span><span class="s2">, </span><span class="s1">fullName</span><span class="s2">, </span><span class="s1">gender</span><span class="s2">, </span><span class="s1">address</span><span class="s2">, </span><span class="s1">dateOfBirth</span><span class="s2">, </span><span class="s1">email)</span><span class="s2">;</span>
+        <span class="s0">return new </span><span class="s1">model.PhoneBook(phoneNumber</span><span class="s2">,</span><span class="s1">group</span><span class="s2">, </span><span class="s1">fullName</span><span class="s2">, </span><span class="s1">gender</span><span class="s2">, </span><span class="s1">address</span><span class="s2">, </span><span class="s1">dateOfBirth</span><span class="s2">, </span><span class="s1">email)</span><span class="s2">;</span>
     <span class="s1">}</span>
 
 
@@ -185,7 +185,7 @@ PhoneBookRun.java</font>
         <span class="s0">int </span><span class="s1">index</span><span class="s2">;</span>
         <span class="s0">do </span><span class="s1">{</span>
             <span class="s1">System.out.println(</span><span class="s4">&quot;Số điện thoại : &quot;</span><span class="s1">)</span><span class="s2">;</span>
-            <span class="s1">numberPhone = Const.SCANNER.nextLine()</span><span class="s2">;</span>
+            <span class="s1">numberPhone = view.Const.SCANNER.nextLine()</span><span class="s2">;</span>
             <span class="s1">matcherPhone = patternPhone.matcher(numberPhone)</span><span class="s2">;</span>
             <span class="s1">index = phoneBooks.searchIndexByPhoneNumber((numberPhone))</span><span class="s2">;</span>
             <span class="s0">if </span><span class="s1">(index != -</span><span class="s3">1</span><span class="s1">) {</span>
@@ -205,7 +205,7 @@ PhoneBookRun.java</font>
         <span class="s1">Matcher matcherEmail</span><span class="s2">;</span>
         <span class="s0">do </span><span class="s1">{</span>
             <span class="s1">System.out.println(</span><span class="s4">&quot;Email: &quot;</span><span class="s1">)</span><span class="s2">;</span>
-            <span class="s1">email = Const.SCANNER.nextLine()</span><span class="s2">;</span>
+            <span class="s1">email = view.Const.SCANNER.nextLine()</span><span class="s2">;</span>
             <span class="s1">matcherEmail = patternEamil.matcher(email)</span><span class="s2">;</span>
             <span class="s0">if </span><span class="s1">(!matcherEmail.matches()) {</span>
                 <span class="s1">System.out.println(</span><span class="s4">&quot;Email không hợp lệ mời nhập lại. Email phải có ít nhất 8 kí tự&quot;</span><span class="s1">)</span><span class="s2">;</span>

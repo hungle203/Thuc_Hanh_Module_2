@@ -1,3 +1,10 @@
+package main;
+
+import model.PhoneBook;
+import view.AppException;
+import view.Const;
+import view.PhoneBookManagement;
+
 import java.time.LocalDate;
 import java.util.Objects;
 import java.util.regex.Matcher;
@@ -168,7 +175,6 @@ public class PhoneBookRun {
         Matcher matcherPhone;
         int index;
         do {
-            System.out.println("Số điện thoại : ");
             numberPhone = Const.SCANNER.nextLine();
             matcherPhone = patternPhone.matcher(numberPhone);
             index = phoneBooks.searchIndexByPhoneNumber((numberPhone));
