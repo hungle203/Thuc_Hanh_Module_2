@@ -117,28 +117,31 @@ public class PhoneBookRun {
     }
 
     private void addPhoneBook() {
-        PhoneBook phoneBook = inputPhoneBookEdit();
+        PhoneBook phoneBook = createPhoneBook();
         phoneBooks.add(phoneBook);
     }
-//    private PhoneBook createPhoneBook(){
-//        Const.SCANNER.nextLine();
-//        String numberPhone = inputPhoneBook();
-//        String group = Const.SCANNER.nextLine();
-//        String fullName = Const.SCANNER.nextLine();
-//        String gender = Const.SCANNER.nextLine();
-//        String address = Const.SCANNER.nextLine();
-//        LocalDate dateOfBirth;
-//        do {
-//            System.out.println("Ngày sinh.");
-//            String dateString = Const.SCANNER.nextLine();
-//            dateOfBirth = AppException.inputDate(dateString);
-//        } while (dateOfBirth == null);
-//        String email = inputEmail();
-//        return new PhoneBook(numberPhone, group, fullName, gender, address, dateOfBirth, email);
-//    }
+    private PhoneBook createPhoneBook(){
+        System.out.println("Nhập số điện thoại");
+        String numberPhone = inputPhoneBook();
+        System.out.println("Nhóm của bạn là");
+        String group = Const.SCANNER.nextLine();
+        System.out.println("Họ tên");
+        String fullName = Const.SCANNER.nextLine();
+        System.out.println("Giới tính");
+        String gender = Const.SCANNER.nextLine();
+        System.out.println("Địa chỉ");
+        String address = Const.SCANNER.nextLine();
+        LocalDate dateOfBirth;
+        do {
+            System.out.println("Ngày sinh.");
+            String dateString = Const.SCANNER.nextLine();
+            dateOfBirth = AppException.inputDate(dateString);
+        } while (dateOfBirth == null);
+        String email = inputEmail();
+        return new PhoneBook(numberPhone, group, fullName, gender, address, dateOfBirth, email);
+    }
 
     private PhoneBook inputPhoneBookEdit() {
-        String phoneNumber = inputPhoneBook();
         System.out.println("Nhóm của danh bạ.");
         String group = Const.SCANNER.nextLine();
         System.out.println("Họ tên.");
@@ -154,7 +157,7 @@ public class PhoneBookRun {
             dateOfBirth = AppException.inputDate(dateString);
         } while (dateOfBirth == null);
         String email = inputEmail();
-        return new PhoneBook(phoneNumber,group, fullName, gender, address, dateOfBirth, email);
+        return new PhoneBook(group, fullName, gender, address, dateOfBirth, email);
     }
 
 
